@@ -1,0 +1,58 @@
+{
+  "title": "Yelp scraper input",
+  "type": "object",
+  "properties": {
+    "search": {
+      "type": "string",
+      "title": "Keyword (e.g., 'plumber')",
+      "default": "plumber"
+    },
+    "location": {
+      "type": "string",
+      "title": "Location (e.g., 'San Francisco, CA')",
+      "default": "San Francisco, CA"
+    },
+    "yelpSearchUrl": {
+      "type": "string",
+      "title": "Yelp search URL (overrides keyword+location)",
+      "default": ""
+    },
+    "maxResults": {
+      "type": "integer",
+      "title": "Max results (business detail pages to save)",
+      "default": 200
+    },
+    "fetchContactsFromWebsite": {
+      "type": "boolean",
+      "title": "Also crawl business website to find email/phone/social",
+      "default": true
+    },
+    "contactPagePaths": {
+      "type": "array",
+      "title": "Likely contact paths to try on websites",
+      "items": { "type": "string" },
+      "default": ["/contact", "/contact-us", "/about", "/about-us"]
+    },
+    "useResidentialProxy": {
+      "type": "boolean",
+      "title": "Use Apify residential proxies (recommended)",
+      "default": true
+    },
+    "proxyCountryCode": {
+      "type": "string",
+      "title": "Proxy country code (e.g., US)",
+      "default": "US"
+    },
+    "maxConcurrency": {
+      "type": "integer",
+      "title": "Max concurrency",
+      "default": 5
+    },
+    "debugScreenshots": {
+      "type": "boolean",
+      "title": "Save screenshots on block/captcha",
+      "default": true
+    }
+  },
+  "required": []
+}

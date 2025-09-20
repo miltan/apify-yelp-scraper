@@ -1,8 +1,13 @@
-# Sample GitLab Project
+# Apify Yelp Scraper
 
-This sample project shows how a project in GitLab looks for demonstration purposes. It contains issues, merge requests and Markdown files in many branches,
-named and filled with lorem ipsum.
+Scrapes Yelp search results and business detail pages, then optionally visits each business website to extract contact details (emails, phones, social links).
 
-You can look around to get an idea how to structure your project and, when done, you can safely delete this project.
+## Folder structure
 
-[Learn more about creating GitLab projects.](https://docs.gitlab.com/ee/gitlab-basics/create-project.html)
+See repository root. `src/` holds the code; `input_schema.json` defines actor inputs.
+
+## Quick start (locally)
+
+1. Install node 18+.
+2. `npm install`
+3. Run locally with Apify storage emulation:

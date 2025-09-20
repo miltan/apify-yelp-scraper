@@ -1,0 +1,21 @@
+{
+  "name": "apify-yelp-scraper",
+  "version": "1.0.0",
+  "description": "Apify Actor to scrape Yelp business listings and enrich with contact details from businesses' websites.",
+  "author": "Your Name <you@example.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node src/main.js",
+    "local": "APIFY_LOCAL_STORAGE_DIR=./storage node src/main.js"
+  },
+  "dependencies": {
+    "@apify/actor": "^3.3.0",
+    "@apify/got-scraping": "^4.0.5",
+    "@crawlee/playwright": "^3.12.0",
+    "playwright": "^1.47.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
