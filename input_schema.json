@@ -1,9 +1,8 @@
 {
-  "schemaVersion": 1,
   "title": "Yelp Business Scraper",
   "description": "Scrape Yelp search results, visit each business page, and optionally crawl the business website to extract emails, phones, and social links.",
   "type": "object",
-  "additionalProperties": false,
+  "schemaVersion": 1,
   "properties": {
     "search": {
       "title": "Keyword",
@@ -47,10 +46,17 @@
       "description": "Relative paths appended to the business website to look for contact info. Homepage is always tried first.",
       "type": "array",
       "editor": "select",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "uniqueItems": true,
       "minItems": 1,
-      "default": ["/contact", "/contact-us", "/about", "/about-us"]
+      "default": [
+        "/contact",
+        "/contact-us",
+        "/about",
+        "/about-us"
+      ]
     },
     "websiteRequestTimeoutMs": {
       "title": "Website request timeout (ms)",
