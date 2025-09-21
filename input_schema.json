@@ -23,7 +23,6 @@
       "title": "Yelp search URL (optional)",
       "description": "Full Yelp search URL. If provided, overrides Keyword + Location.",
       "type": "string",
-      "format": "uri",
       "editor": "textfield",
       "default": ""
     },
