@@ -48,7 +48,6 @@
       "editor": "select",
       "items": {
         "type": "string",
-        "editor": "select",
         "enum": [
           "/contact",
           "/contact-us",
