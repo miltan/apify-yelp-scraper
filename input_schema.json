@@ -6,44 +6,52 @@
   "properties": {
     "search": {
       "type": "string",
-      "title": "Keyword (e.g., 'plumber')",
+      "title": "Keyword",
+      "description": "Business type or keyword to search on Yelp (e.g., 'plumber').",
       "default": "plumber"
     },
     "location": {
       "type": "string",
-      "title": "Location (e.g., 'San Francisco, CA')",
+      "title": "Location",
+      "description": "City or area to search in (e.g., 'San Francisco, CA').",
       "default": "San Francisco, CA"
     },
     "yelpSearchUrl": {
       "type": "string",
-      "title": "Yelp search URL (overrides keyword+location)",
+      "title": "Yelp search URL",
+      "description": "Full Yelp search URL. If provided, overrides keyword+location.",
       "default": ""
     },
     "maxResults": {
       "type": "integer",
       "title": "Max results",
+      "description": "Maximum number of business listings to scrape.",
       "default": 200,
       "minimum": 1
     },
     "fetchContactsFromWebsite": {
       "type": "boolean",
-      "title": "Also crawl business website to find email/phone/social",
+      "title": "Scrape contacts from website",
+      "description": "If true, the actor will visit the business website and attempt to extract emails, phones, and social links.",
       "default": true
     },
     "contactPagePaths": {
       "type": "array",
-      "title": "Likely contact paths to try on websites",
+      "title": "Contact page paths",
+      "description": "Relative paths to try on business websites for contact info.",
       "items": { "type": "string" },
       "default": ["/contact", "/contact-us", "/about", "/about-us"]
     },
     "useResidentialProxy": {
       "type": "boolean",
-      "title": "Use Apify residential proxies (recommended)",
+      "title": "Use residential proxies",
+      "description": "Whether to use Apify residential proxy group. Strongly recommended for Yelp scraping.",
       "default": true
     },
     "proxyCountryCode": {
       "type": "string",
-      "title": "Proxy country code (e.g., US)",
+      "title": "Proxy country code",
+      "description": "2-letter country code for proxies (e.g., US).",
       "default": "US",
       "minLength": 2,
       "maxLength": 2
@@ -51,12 +59,14 @@
     "maxConcurrency": {
       "type": "integer",
       "title": "Max concurrency",
+      "description": "Maximum number of parallel browser pages to run.",
       "default": 5,
       "minimum": 1
     },
     "debugScreenshots": {
       "type": "boolean",
       "title": "Save screenshots on block/captcha",
+      "description": "If true, saves a screenshot when a request fails for debugging.",
       "default": true
     }
   },
