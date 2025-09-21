@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "title": "Yelp Business Scraper",
-  "description": "Scrape Yelp search results, open each business page, and optionally visit the business website to extract emails, phones, and social links.",
+  "description": "Scrape Yelp search results, visit each business page, and optionally crawl the business website to extract emails, phones, and social links.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -9,39 +9,48 @@
       "title": "Keyword",
       "description": "Business type or keyword to search on Yelp (e.g., plumber, dentist, coffee). Ignored if a Yelp search URL is provided.",
       "type": "string",
-      "default": "plumber"
+      "editor": "textfield",
+      "default": "plumber",
+      "placeholder": "e.g., plumber"
     },
     "location": {
       "title": "Location",
       "description": "City/area to search in (e.g., San Francisco, CA). Ignored if a Yelp search URL is provided.",
       "type": "string",
-      "default": "San Francisco, CA"
+      "editor": "textfield",
+      "default": "San Francisco, CA",
+      "placeholder": "e.g., San Francisco, CA"
     },
     "yelpSearchUrl": {
       "title": "Yelp search URL (optional)",
-      "description": "Full Yelp search URL. If provided, it overrides Keyword + Location (e.g., https://www.yelp.com/search?find_desc=plumber&find_loc=San+Francisco%2C+CA).",
+      "description": "Full Yelp search URL. If provided, overrides Keyword + Location.",
       "type": "string",
       "format": "uri",
-      "default": ""
+      "editor": "textfield",
+      "default": "",
+      "placeholder": "https://www.yelp.com/search?find_desc=plumber&find_loc=San+Francisco%2C+CA"
     },
     "maxResults": {
       "title": "Max results",
-      "description": "Maximum number of business listings to collect from Yelp (approximate; actual count may be slightly lower or higher due to pagination behavior).",
+      "description": "Maximum number of business listings to collect (approximate due to pagination).",
       "type": "integer",
       "minimum": 1,
       "maximum": 10000,
+      "editor": "number",
       "default": 200
     },
     "fetchContactsFromWebsite": {
       "title": "Also scrape business website",
       "description": "If true, the actor will visit the business website (when available) and try common contact pages to extract emails, phones, and social links.",
       "type": "boolean",
+      "editor": "checkbox",
       "default": true
     },
     "contactPagePaths": {
       "title": "Website paths to try",
-      "description": "Relative paths that will be appended to the business website to look for contact info. The homepage is always tried first.",
+      "description": "Relative paths appended to the business website to look for contact info. Homepage is always tried first.",
       "type": "array",
+      "editor": "array",
       "items": { "type": "string" },
       "uniqueItems": true,
       "minItems": 1,
@@ -49,37 +58,43 @@
     },
     "websiteRequestTimeoutMs": {
       "title": "Website request timeout (ms)",
-      "description": "Timeout for fetching business websites during contact enrichment (via HTTP requests). Increase if many sites are slow to respond.",
+      "description": "Timeout used when fetching business websites during contact enrichment.",
       "type": "integer",
       "minimum": 3000,
       "maximum": 60000,
+      "editor": "number",
       "default": 15000
     },
     "useResidentialProxy": {
       "title": "Use Apify Residential proxy",
-      "description": "Recommended for Yelp. If false, the default Apify proxy/datacenter IPs are used (likely to be blocked faster).",
+      "description": "Recommended for Yelp. If false, datacenter IPs are used (more likely to be blocked).",
       "type": "boolean",
+      "editor": "checkbox",
       "default": true
     },
     "proxyCountryCode": {
       "title": "Proxy country code",
-      "description": "2-letter country code used when selecting residential proxies (e.g., US). Ignored if residential proxies are disabled.",
+      "description": "2-letter country code for proxies (e.g., US). Ignored if residential proxies are disabled.",
       "type": "string",
       "pattern": "^[A-Z]{2}$",
-      "default": "US"
+      "editor": "textfield",
+      "default": "US",
+      "placeholder": "US"
     },
     "maxConcurrency": {
       "title": "Max concurrency",
-      "description": "Maximum number of parallel browser pages (Playwright) to run. Lower this if you hit captchas or blocks.",
+      "description": "Maximum number of parallel browser pages (Playwright). Lower if you hit captchas or blocks.",
       "type": "integer",
       "minimum": 1,
       "maximum": 20,
-      "default": 5
+      "editor": "number",
+      "default": 5"
     },
     "debugScreenshots": {
       "title": "Save screenshots on failure",
       "description": "If true, saves a full-page screenshot when a page fails (useful for diagnosing cookie walls/captchas).",
       "type": "boolean",
+      "editor": "checkbox",
       "default": true
     }
   },
