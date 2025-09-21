@@ -43,12 +43,43 @@
     },
     "contactPagePaths": {
       "title": "Website paths to try",
-      "description": "Relative paths appended to the business website to look for contact info. Homepage is always tried first.",
+      "description": "Select which paths to probe on the business website. The homepage is always tried first.",
       "type": "array",
       "editor": "select",
       "items": {
-        "type": "string"
+        "type": "string",
+        "editor": "select",
+        "enum": [
+          "/contact",
+          "/contact-us",
+          "/contactus",
+          "/contacts",
+          "/about",
+          "/about-us",
+          "/company",
+          "/company/contact",
+          "/support",
+          "/help",
+          "/get-in-touch"
+        ],
+        "enumTitles": [
+          "/contact",
+          "/contact-us",
+          "/contactus",
+          "/contacts",
+          "/about",
+          "/about-us",
+          "/company",
+          "/company/contact",
+          "/support",
+          "/help",
+          "/get-in-touch"
+        ]
       },
+      "uniqueItems": true,
+      "minItems": 1,
+      "default": ["/contact", "/contact-us", "/about", "/about-us"]
+    },
       "uniqueItems": true,
       "minItems": 1,
       "default": [
