@@ -10,8 +10,7 @@
       "description": "Business type or keyword to search on Yelp (e.g., plumber, dentist, coffee). Ignored if a Yelp search URL is provided.",
       "type": "string",
       "editor": "textfield",
-      "default": "plumber",
-      "placeholder": "e.g., plumber"
+      "default": "plumber"
     },
     "location": {
       "title": "Location",
