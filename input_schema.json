@@ -1,72 +1,85 @@
 {
   "schemaVersion": 1,
-  "title": "Yelp scraper input",
+  "title": "Yelp Business Scraper",
+  "description": "Scrape Yelp search results, open each business page, and optionally visit the business website to extract emails, phones, and social links.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "search": {
-      "type": "string",
       "title": "Keyword",
-      "description": "Business type or keyword to search on Yelp (e.g., 'plumber').",
+      "description": "Business type or keyword to search on Yelp (e.g., plumber, dentist, coffee). Ignored if a Yelp search URL is provided.",
+      "type": "string",
       "default": "plumber"
     },
     "location": {
-      "type": "string",
       "title": "Location",
-      "description": "City or area to search in (e.g., 'San Francisco, CA').",
+      "description": "City/area to search in (e.g., San Francisco, CA). Ignored if a Yelp search URL is provided.",
+      "type": "string",
       "default": "San Francisco, CA"
     },
     "yelpSearchUrl": {
+      "title": "Yelp search URL (optional)",
+      "description": "Full Yelp search URL. If provided, it overrides Keyword + Location (e.g., https://www.yelp.com/search?find_desc=plumber&find_loc=San+Francisco%2C+CA).",
       "type": "string",
-      "title": "Yelp search URL",
-      "description": "Full Yelp search URL. If provided, overrides keyword+location.",
+      "format": "uri",
       "default": ""
     },
     "maxResults": {
-      "type": "integer",
       "title": "Max results",
-      "description": "Maximum number of business listings to scrape.",
-      "default": 200,
-      "minimum": 1
+      "description": "Maximum number of business listings to collect from Yelp (approximate; actual count may be slightly lower or higher due to pagination behavior).",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000,
+      "default": 200
     },
     "fetchContactsFromWebsite": {
+      "title": "Also scrape business website",
+      "description": "If true, the actor will visit the business website (when available) and try common contact pages to extract emails, phones, and social links.",
       "type": "boolean",
-      "title": "Scrape contacts from website",
-      "description": "If true, the actor will visit the business website and attempt to extract emails, phones, and social links.",
       "default": true
     },
     "contactPagePaths": {
+      "title": "Website paths to try",
+      "description": "Relative paths that will be appended to the business website to look for contact info. The homepage is always tried first.",
       "type": "array",
-      "title": "Contact page paths",
-      "description": "Relative paths to try on business websites for contact info.",
       "items": { "type": "string" },
+      "uniqueItems": true,
+      "minItems": 1,
       "default": ["/contact", "/contact-us", "/about", "/about-us"]
     },
+    "websiteRequestTimeoutMs": {
+      "title": "Website request timeout (ms)",
+      "description": "Timeout for fetching business websites during contact enrichment (via HTTP requests). Increase if many sites are slow to respond.",
+      "type": "integer",
+      "minimum": 3000,
+      "maximum": 60000,
+      "default": 15000
+    },
     "useResidentialProxy": {
+      "title": "Use Apify Residential proxy",
+      "description": "Recommended for Yelp. If false, the default Apify proxy/datacenter IPs are used (likely to be blocked faster).",
       "type": "boolean",
-      "title": "Use residential proxies",
-      "description": "Whether to use Apify residential proxy group. Strongly recommended for Yelp scraping.",
       "default": true
     },
     "proxyCountryCode": {
-      "type": "string",
       "title": "Proxy country code",
-      "description": "2-letter country code for proxies (e.g., US).",
-      "default": "US",
-      "minLength": 2,
-      "maxLength": 2
+      "description": "2-letter country code used when selecting residential proxies (e.g., US). Ignored if residential proxies are disabled.",
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "default": "US"
     },
     "maxConcurrency": {
-      "type": "integer",
       "title": "Max concurrency",
-      "description": "Maximum number of parallel browser pages to run.",
-      "default": 5,
-      "minimum": 1
+      "description": "Maximum number of parallel browser pages (Playwright) to run. Lower this if you hit captchas or blocks.",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 20,
+      "default": 5
     },
     "debugScreenshots": {
+      "title": "Save screenshots on failure",
+      "description": "If true, saves a full-page screenshot when a page fails (useful for diagnosing cookie walls/captchas).",
       "type": "boolean",
-      "title": "Save screenshots on block/captcha",
-      "description": "If true, saves a screenshot when a request fails for debugging.",
       "default": true
     }
   },
