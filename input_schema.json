@@ -17,8 +17,7 @@
       "description": "City/area to search in (e.g., San Francisco, CA). Ignored if a Yelp search URL is provided.",
       "type": "string",
       "editor": "textfield",
-      "default": "San Francisco, CA",
-      "placeholder": "e.g., San Francisco, CA"
+      "default": "San Francisco, CA"
     },
     "yelpSearchUrl": {
       "title": "Yelp search URL (optional)",
@@ -26,8 +25,7 @@
       "type": "string",
       "format": "uri",
       "editor": "textfield",
-      "default": "",
-      "placeholder": "https://www.yelp.com/search?find_desc=plumber&find_loc=San+Francisco%2C+CA"
+      "default": ""
     },
     "maxResults": {
       "title": "Max results",
@@ -77,8 +75,7 @@
       "type": "string",
       "pattern": "^[A-Z]{2}$",
       "editor": "textfield",
-      "default": "US",
-      "placeholder": "US"
+      "default": "US"
     },
     "maxConcurrency": {
       "title": "Max concurrency",
