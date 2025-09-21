@@ -1,6 +1,8 @@
 {
+  "schemaVersion": 1,
   "title": "Yelp scraper input",
   "type": "object",
+  "additionalProperties": false,
   "properties": {
     "search": {
       "type": "string",
@@ -19,8 +21,9 @@
     },
     "maxResults": {
       "type": "integer",
-      "title": "Max results (business detail pages to save)",
-      "default": 200
+      "title": "Max results",
+      "default": 200,
+      "minimum": 1
     },
     "fetchContactsFromWebsite": {
       "type": "boolean",
@@ -41,12 +44,15 @@
     "proxyCountryCode": {
       "type": "string",
       "title": "Proxy country code (e.g., US)",
-      "default": "US"
+      "default": "US",
+      "minLength": 2,
+      "maxLength": 2
     },
     "maxConcurrency": {
       "type": "integer",
       "title": "Max concurrency",
-      "default": 5
+      "default": 5,
+      "minimum": 1
     },
     "debugScreenshots": {
       "type": "boolean",
