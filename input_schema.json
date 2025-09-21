@@ -80,15 +80,6 @@
       "minItems": 1,
       "default": ["/contact", "/contact-us", "/about", "/about-us"]
     },
-      "uniqueItems": true,
-      "minItems": 1,
-      "default": [
-        "/contact",
-        "/contact-us",
-        "/about",
-        "/about-us"
-      ]
-    },
     "websiteRequestTimeoutMs": {
       "title": "Website request timeout (ms)",
       "description": "Timeout used when fetching business websites during contact enrichment.",
