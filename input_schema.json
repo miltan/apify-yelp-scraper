@@ -46,7 +46,7 @@
       "title": "Website paths to try",
       "description": "Relative paths appended to the business website to look for contact info. Homepage is always tried first.",
       "type": "array",
-      "editor": 1,
+      "editor": "select",
       "items": { "type": "string" },
       "uniqueItems": true,
       "minItems": 1,
